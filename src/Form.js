@@ -10,6 +10,7 @@ export default function Form() {
     comments: '',
     isFriendly: true,
     employment: 'unemployed',
+    favColor: '',
   });
 
   function handleChange(event) {
@@ -22,7 +23,7 @@ export default function Form() {
     });
   }
 
-  console.log(formData.employment);
+  console.log(formData.favColor);
 
   return (
     <form>
@@ -97,6 +98,20 @@ export default function Form() {
         <label htmlFor="full-time">full-time</label>
         <br />
       </fieldset>
+      <br />
+      <label htmlFor="favColor">What is your favorite color?</label>
+      <br />
+      <select
+        id="favColor"
+        name="favColor"
+        value={formData.favColor}
+        onChange={handleChange}
+      >
+        <option value="">-- Choose --</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="yellow">Yellow</option>
+      </select>
     </form>
   );
 }
