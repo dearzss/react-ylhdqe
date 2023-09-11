@@ -15,4 +15,8 @@ root.render(
   </StrictMode>
 );
 */
-ReactDom.render(<Form />, document.getElementById('form'));
+//ReactDom.render(<Form />, document.getElementById('form'));
+
+const rootElement = document.getElementById('form');
+const root = createRoot(rootElement);
+root.render(<Form />);
