@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import './style.css';
 
 export default function Form() {
   //const [firstName, setFirstName] = React.useState('');
@@ -7,6 +8,7 @@ export default function Form() {
     firstName: '',
     lastName: '',
     email: '',
+    comments: '',
   });
 
   function handleChange(event) {
@@ -23,7 +25,6 @@ export default function Form() {
   return (
     <form>
       <input
-        className="firstName"
         type="text"
         placeholder="First Name"
         onChange={handleChange}
@@ -43,6 +44,12 @@ export default function Form() {
         onChange={handleChange}
         name="email"
         value={formData.email}
+      />
+      <textarea
+        placeholder="Comments"
+        onChange={handleChange}
+        name="comments"
+        value={formData.comments}
       />
     </form>
   );
