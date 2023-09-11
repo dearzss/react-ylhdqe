@@ -23,6 +23,7 @@ export default function Form() {
   return (
     <form>
       <input
+        className="firstName"
         type="text"
         placeholder="First Name"
         onChange={handleChange}

@@ -10,4 +10,10 @@ body {
 input {
   margin-bottom: 15px;
   height: 30px;
+  border-radius: 5px;
+}
+
+.firstName {
+  margin-bottom: 15px;
+  height: 30px;
 }
