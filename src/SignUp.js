@@ -34,6 +34,15 @@ export default function SignUp() {
           name="passwordConfirm"
           onChange={handleChange}
         />
+        <div>
+          <input
+            id="okayToEmail"
+            type="checkbox"
+            name="joinedNewsletter"
+            onChange={handleChange}
+          />
+          <label htmlFor="okayToEmail">I want to join the newsletter</label>
+        </div>
       </form>
     </div>
   );
