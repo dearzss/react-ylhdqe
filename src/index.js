@@ -6,6 +6,7 @@ import App from './App';
 import Form from './Form';
 import SignUp from './SignUp';
 import ConditionalRender from './ConditionalRender.js';
+import Gallery from './Gallery.js';
 
 /*
 const rootElement = document.getElementById('root');
@@ -29,6 +30,12 @@ const rootElement = document.getElementById('signup');
 const root = createRoot(rootElement);
 root.render(<SignUp />);
 */
+/*
 const rootElement = document.getElementById('conditionalrender');
 const root = createRoot(rootElement);
 root.render(<ConditionalRender />);
+*/
+
+const rootElement = document.getElementById('gallery');
+const root = createRoot(rootElement);
+root.render(<Gallery />);
