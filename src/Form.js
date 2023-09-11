@@ -9,10 +9,13 @@ export default function Form() {
   });
 
   function handleChange(event) {
-    console.log(event.target.value);
+    setFormData((prevFromData) => {
+      return {
+        ...prevFromData,
+        [event.target.name]: event.target.value,
+      };
+    });
   }
-
-  //console.log(firstName);
 
   return (
     <form>
