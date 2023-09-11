@@ -28,12 +28,11 @@ export default function App() {
 
 //Creating and traversing a list
 const numbers = [1, 2, 3, 4, 5];
-/*
 const updatedNums = numbers.map((number) => {
   return <li key={number.toString()}>{number}</li>;
 });
 
-console.log({ updatedNums });
+//console.log({ updatedNums });
 
 export default function App() {
   return (
@@ -42,7 +41,3 @@ export default function App() {
     </div>
   );
 }
-*/
-
-//form
-export default function App() {}
