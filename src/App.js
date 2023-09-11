@@ -1,9 +1,10 @@
 import React from 'react';
 import './style.css';
 
+/*
 const user = {
   name: 'testing',
-  imageUrl: 'https://i.imgur.com/yXOvdOSs.jpg',
+  imageUrl: '/react.JPG',
   imageSize: 90,
 };
 
@@ -20,6 +21,23 @@ export default function App() {
           height: user.imageSize,
         }}
       />
+    </div>
+  );
+}
+*/
+
+//Creating and traversing a list
+const numbers = [1, 2, 3, 4, 5];
+const updatedNums = numbers.map((number) => {
+  return <li>{number}</li>;
+});
+
+console.log({ updatedNums });
+
+export default function App() {
+  return (
+    <div>
+      <h1>testing</h1>
     </div>
   );
 }
