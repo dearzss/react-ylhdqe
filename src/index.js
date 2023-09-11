@@ -5,6 +5,7 @@ import ReactDom from 'react-dom';
 import App from './App';
 import Form from './Form';
 import SignUp from './SignUp';
+import ConditionalRender from './ConditionalRender.js';
 
 /*
 const rootElement = document.getElementById('root');
@@ -23,7 +24,11 @@ const rootElement = document.getElementById('form');
 const root = createRoot(rootElement);
 root.render(<Form />);
 */
-
+/*
 const rootElement = document.getElementById('signup');
 const root = createRoot(rootElement);
 root.render(<SignUp />);
+*/
+const rootElement = document.getElementById('conditionalrender');
+const root = createRoot(rootElement);
+root.render(<ConditionalRender />);
