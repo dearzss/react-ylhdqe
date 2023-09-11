@@ -36,6 +36,7 @@ const root = createRoot(rootElement);
 root.render(<ConditionalRender />);
 */
 
+//Initial render
 const rootElement = document.getElementById('gallery');
 const root = createRoot(rootElement);
 root.render(<Gallery />);

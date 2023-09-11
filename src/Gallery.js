@@ -23,7 +23,9 @@ export default function Gallery() {
       <button onClick={handlePrevClick} disabled={index > 0 ? false : true}>
         Previous
       </button>
-      <button onClick={handleNextClick} disabled={index < 11 ? false : true}>Next</button>
+      <button onClick={handleNextClick} disabled={index < 11 ? false : true}>
+        Next
+      </button>
       <h2>
         <i>{sculpture.name} </i>
         by {sculpture.artist}
