@@ -9,6 +9,7 @@ export default function Form() {
     lastName: '',
     email: '',
     comments: '',
+    isFriendly: true,
   });
 
   function handleChange(event) {
@@ -51,6 +52,8 @@ export default function Form() {
         name="comments"
         value={formData.comments}
       />
+      <input type="checkbox" id="isFriendly" name="isFriendly" value={formData.isFriendly}/>
+      <label htmlFor="isFriendly">Are you friendly?</label>
     </form>
   );
 }
