@@ -10,6 +10,7 @@ export default function Form() {
     email: '',
     comments: '',
     isFriendly: true,
+    employment: '',
   });
 
   function handleChange(event) {
@@ -22,7 +23,7 @@ export default function Form() {
     });
   }
 
-  console.log(formData);
+  console.log(formData.employment);
 
   return (
     <form>
@@ -63,12 +64,36 @@ export default function Form() {
       <label htmlFor="isFriendly">Are you friendly?</label>
       <fieldset>
         <legend>Current employment status:</legend>
-        <input type="radio" id="unemployed" />
+        <input
+          type="radio"
+          id="unemployed"
+          name="employment"
+          value="unemployed"
+          onChange={handleChange}
+          checked={formData.employment === 'unemployed'}
+        />
         <label htmlFor="unemployed">Unemployed</label>
         <br />
-        <label for="lname">Last name:</label>
-        <label for="email">Email:</label>
-        <label for="birthday">Birthday:</label>
+        <input
+          type="radio"
+          id="part-time"
+          name="employment"
+          value="part-time"
+          onChange={handleChange}
+          checked={formData.employment === 'part-time'}
+        />
+        <label htmlFor="part-time">part-time</label>
+        <br />
+        <input
+          type="radio"
+          id="full-time"
+          value="full-time"
+          name="employment"
+          onChange={handleChange}
+          checked={formData.employment === 'full-time'}
+        />
+        <label htmlFor="full-time">full-time</label>
+        <br />
       </fieldset>
     </form>
   );
