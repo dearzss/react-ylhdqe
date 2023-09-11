@@ -4,6 +4,7 @@ import ReactDom from 'react-dom';
 
 import App from './App';
 import Form from './Form';
+import SignUp from './SignUp';
 
 /*
 const rootElement = document.getElementById('root');
@@ -17,6 +18,12 @@ root.render(
 */
 //ReactDom.render(<Form />, document.getElementById('form'));
 
+/*
 const rootElement = document.getElementById('form');
 const root = createRoot(rootElement);
 root.render(<Form />);
+*/
+
+const rootElement = document.getElementById('signup');
+const root = createRoot(rootElement);
+root.render(<SignUp />);
