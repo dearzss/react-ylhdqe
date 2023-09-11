@@ -1,6 +1,11 @@
 import React from 'react';
 import './signup.css';
 
+//console.log(formData);
+function handleSubmit(event) {
+  event.preventDefault();
+  console.log(event.target);
+}
 export default function SignUp() {
   const [formData, setFormData] = React.useState({
     email: '',
@@ -8,12 +13,6 @@ export default function SignUp() {
     passwordConfirm: '',
     joinedNewsletter: true,
   });
-
-  console.log(formData);
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
 
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
