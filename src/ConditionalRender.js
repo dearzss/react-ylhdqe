@@ -4,6 +4,8 @@ function Item(props) {
   return (
     <li className="item">
       {props.isPacked ? <del>{props.name + ' ✔'}</del> : props.name}
+      {props.name}
+      {props.isPacked && ' ✔'}
     </li>
   );
 }
