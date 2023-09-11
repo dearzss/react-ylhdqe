@@ -52,7 +52,12 @@ export default function Form() {
         name="comments"
         value={formData.comments}
       />
-      <input type="checkbox" id="isFriendly" name="isFriendly" value={formData.isFriendly}/>
+      <input
+        type="checkbox"
+        id="isFriendly"
+        name="isFriendly"
+        checked={formData.isFriendly}
+      />
       <label htmlFor="isFriendly">Are you friendly?</label>
     </form>
   );
