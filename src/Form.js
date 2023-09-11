@@ -13,10 +13,11 @@ export default function Form() {
   });
 
   function handleChange(event) {
+    const { name, value, type, checked } = event.target;
     setFormData((prevFromData) => {
       return {
         ...prevFromData,
-        [event.target.name]: event.target.value,
+        [name]: type === 'checkbox' ? checked : value,
       };
     });
   }
@@ -57,8 +58,18 @@ export default function Form() {
         id="isFriendly"
         name="isFriendly"
         checked={formData.isFriendly}
+        onChange={handleChange}
       />
       <label htmlFor="isFriendly">Are you friendly?</label>
+      <fieldset>
+        <legend>Current employment status:</legend>
+        <input type="radio" id="unemployed" />
+        <label htmlFor="unemployed">Unemployed</label>
+        <br />
+        <label for="lname">Last name:</label>
+        <label for="email">Email:</label>
+        <label for="birthday">Birthday:</label>
+      </fieldset>
     </form>
   );
 }
