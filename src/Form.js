@@ -3,14 +3,13 @@ import ReactDom from 'react-dom';
 import './style.css';
 
 export default function Form() {
-  //const [firstName, setFirstName] = React.useState('');
   const [formData, setFormData] = React.useState({
     firstName: '',
     lastName: '',
     email: '',
     comments: '',
     isFriendly: true,
-    employment: '',
+    employment: 'unemployed',
   });
 
   function handleChange(event) {
@@ -28,6 +27,7 @@ export default function Form() {
   return (
     <form>
       <input
+        className="common"
         type="text"
         placeholder="First Name"
         onChange={handleChange}
@@ -35,6 +35,7 @@ export default function Form() {
         value={formData.firstName}
       />
       <input
+        className="common"
         type="text"
         placeholder="Last Name"
         onChange={handleChange}
@@ -42,6 +43,7 @@ export default function Form() {
         value={formData.lastName}
       />
       <input
+        className="common"
         type="email"
         placeholder="Email"
         onChange={handleChange}
