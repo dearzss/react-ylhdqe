@@ -23,10 +23,13 @@ export default function Form() {
     });
   }
 
-  console.log(formData.favColor);
+  function handleOnSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+  }
 
   return (
-    <form>
+    <form onSubmit={handleOnSubmit}>
       <input
         className="common"
         type="text"
@@ -112,6 +115,8 @@ export default function Form() {
         <option value="blue">Blue</option>
         <option value="yellow">Yellow</option>
       </select>
+      <br />
+      <button>Submit</button>
     </form>
   );
 }
