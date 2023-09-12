@@ -27,7 +27,6 @@ export default function Arrary2() {
   }
 
   function handleChange(newTodo, event) {
-    console.log(newTodo.id);
     setTodos(
       todos.map((todo) => {
         if (newTodo.id === todo.id) {
@@ -81,27 +80,38 @@ export default function Arrary2() {
       ))}
     </>
   );
-}
 
-function Task(todo) {
-  console.log(todo);
-  const [isEditing, setIsEditing] = React.useState(true);
-  let todoContent;
-  if (isEditing) {
-    todoContent = (
-      <>
-        <input type="text" value={todo.title} />
-        <button onClick={() => setIsEditing(false)}>Save</button>
-      </>
-    );
-  } else {
-    todoContent = (
-      <>
-        {todo.title}
-        <button onClick={() => setIsEditing(false)}>Edit</button>
-      </>
-    );
+  function Task({ todo }) {
+    const [isEditing, setIsEditing] = React.useState(false);
+    let todoContent;
+    if (isEditing) {
+      todoContent = (
+        <>
+          <input
+            type="text"
+            value={todo.title}
+            onChange={(e) => {
+              handleChange({ ...todo, title: e.target.value }, e);
+            }}
+          />
+          <button onClick={() => setIsEditing(false)}>Save</button>
+        </>
+      );
+    } else {
+      todoContent = (
+        <>
+          {todo.title}
+          <button
+            onClick={(e) => {
+              setIsEditing(true);
+            }}
+          >
+            Edit
+          </button>
+        </>
+      );
+    }
+
+    return <label>{todoContent}</label>;
   }
-
-  return <label>{todoContent}</label>;
 }
