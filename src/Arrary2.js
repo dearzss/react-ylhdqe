@@ -68,7 +68,7 @@ export default function Arrary2() {
               handleChange({ ...todo, done: e.target.checked }, e);
             }}
           />
-          <Task todo={todo} />
+          <Task todo={todo} onChange={handleChange} />
           <button
             onClick={(e) => {
               handleDelete(todo.id);
@@ -80,38 +80,38 @@ export default function Arrary2() {
       ))}
     </>
   );
+}
 
-  function Task({ todo }) {
-    const [isEditing, setIsEditing] = React.useState(false);
-    let todoContent;
-    if (isEditing) {
-      todoContent = (
-        <>
-          <input
-            type="text"
-            value={todo.title}
-            onChange={(e) => {
-              handleChange({ ...todo, title: e.target.value }, e);
-            }}
-          />
-          <button onClick={() => setIsEditing(false)}>Save</button>
-        </>
-      );
-    } else {
-      todoContent = (
-        <>
-          {todo.title}
-          <button
-            onClick={(e) => {
-              setIsEditing(true);
-            }}
-          >
-            Edit
-          </button>
-        </>
-      );
-    }
-
-    return <label>{todoContent}</label>;
+function Task({ todo, onChange }) {
+  const [isEditing, setIsEditing] = React.useState(false);
+  let todoContent;
+  if (isEditing) {
+    todoContent = (
+      <>
+        <input
+          type="text"
+          value={todo.title}
+          onChange={(e) => {
+            onChange({ ...todo, title: e.target.value }, e);
+          }}
+        />
+        <button onClick={() => setIsEditing(false)}>Save</button>
+      </>
+    );
+  } else {
+    todoContent = (
+      <>
+        {todo.title}
+        <button
+          onClick={(e) => {
+            setIsEditing(true);
+          }}
+        >
+          Edit
+        </button>
+      </>
+    );
   }
+
+  return <>{todoContent}</>;
 }
