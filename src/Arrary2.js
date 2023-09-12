@@ -32,13 +32,29 @@ export default function Arrary2() {
   }
 
   function handleChangeTodo(nextTodo) {
-    console.log(nextTodo);
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === nextTodo.id) {
+          return nextTodo;
+        } else {
+          return todo;
+        }
+      })
+    );
+  }
+
+  function handleDeleteTodo(todoID) {
+    setTodos(todos.filter((t) => t.id !== todoID));
   }
 
   return (
     <>
       <AddTodo onAddTodo={handleAddTodo}></AddTodo>
-      <TaskList todos={todos} onChangeTodo={handleChangeTodo}></TaskList>
+      <TaskList
+        todos={todos}
+        onChangeTodo={handleChangeTodo}
+        onDeleteTodo={handleDeleteTodo}
+      ></TaskList>
     </>
   );
 }

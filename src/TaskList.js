@@ -1,20 +1,63 @@
 import React from 'react';
 
-export default function TaskList({ todos, onChangeTodo }) {
+export default function TaskList({ todos, onChangeTodo, onDeleteTodo }) {
   return (
     <ul>
       {todos.map((todo) => (
         <li key={todo.id}>
-          <Task todo={todo} onChange={onChangeTodo}></Task>
+          <Task
+            todo={todo}
+            onChange={onChangeTodo}
+            onDelete={onDeleteTodo}
+          ></Task>
         </li>
       ))}
     </ul>
   );
 }
 
-function Task({ todo, onChange }) {
+function Task({ todo, onChange, onDelete }) {
+  const [isEditing, setIsEditing] = React.useState(false);
+  let todoContent;
+  if (isEditing) {
+    todoContent = (
+      <>
+        <input
+          type="text"
+          value={todo.title}
+          onChange={(e) => {
+            onChange({
+              ...todo,
+              title: e.target.value,
+            });
+          }}
+        />
+        <button
+          onClick={(e) => {
+            setIsEditing(false);
+          }}
+        >
+          Save
+        </button>
+      </>
+    );
+  } else {
+    todoContent = (
+      <>
+        {todo.title}
+        <button
+          onClick={() => {
+            setIsEditing(true);
+          }}
+        >
+          Edit
+        </button>
+      </>
+    );
+  }
+
   return (
-    <lable>
+    <label>
       <input
         type="checkbox"
         checked={todo.done}
@@ -22,10 +65,18 @@ function Task({ todo, onChange }) {
         onChange={(e) => {
           onChange({
             ...todo,
-            title: e.target.checked,
+            done: e.target.checked,
           });
         }}
       ></input>
-    </lable>
+      {todoContent}
+      <button
+        onClick={() => {
+          onDelete(todo.id);
+        }}
+      >
+        Delete
+      </button>
+    </label>
   );
 }
