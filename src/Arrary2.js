@@ -14,14 +14,31 @@ export default function Arrary2() {
   const [todos, setTodos] = React.useState(initialTodos);
 
   function handleAddTodo(title, event) {
-    console.log(title);
-    console.log(event.target);
+    if (title !== undefined && title !== null && title.trim() !== '') {
+      const insertAt = 2; // Could be any index
+      const newTodos = [
+        ...todos.slice(0, insertAt),
+        {
+          id: nextID++,
+          title: title,
+          done: false,
+        },
+        ...todos.slice(insertAt),
+      ];
+      setTodos(newTodos);
+    } else {
+      console.log('cannot be null');
+    }
+  }
+
+  function handleChangeTodo(nextTodo) {
+    console.log(nextTodo);
   }
 
   return (
     <>
       <AddTodo onAddTodo={handleAddTodo}></AddTodo>
-      <TaskList todos={todos}></TaskList>
+      <TaskList todos={todos} onChangeTodo={handleChangeTodo}></TaskList>
     </>
   );
 }
