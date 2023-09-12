@@ -7,6 +7,7 @@ import Form from './Form';
 import SignUp from './SignUp';
 import ConditionalRender from './ConditionalRender.js';
 import Gallery from './Gallery.js';
+import Arrary1 from './Arrary1.js';
 
 /*
 const rootElement = document.getElementById('root');
@@ -37,6 +38,9 @@ root.render(<ConditionalRender />);
 */
 
 //Initial render
+/*
 const rootElement = document.getElementById('gallery');
 const root = createRoot(rootElement);
 root.render(<Gallery />);
+*/
+createRoot(document.getElementById('array'), <Arrary1 />);
