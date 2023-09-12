@@ -21,8 +21,7 @@ const initialProducts = [
 export default function Arrary1() {
   const [products, setProducts] = React.useState(initialProducts);
 
-  function handleClick(productID, event) {
-    console.log(productID);
+  function handleInClick(productID, event) {
     setProducts(
       products.map((product) => {
         if (productID === product.id) {
@@ -37,6 +36,22 @@ export default function Arrary1() {
     );
   }
 
+  function handleDeClick(productID, event) {
+    console.log(productID);
+    let newProducts = products.map((product) => {
+      if (productID === product.id) {
+        return {
+          ...product,
+          count: product.count - 1,
+        };
+      } else {
+        return product;
+      }
+    });
+
+    setProducts(newProducts.filter((p) => p.count > 0));
+  }
+
   return (
     <ul>
       {products.map((product) => (
@@ -44,10 +59,17 @@ export default function Arrary1() {
           {product.name} (<b>{product.count}</b>)
           <button
             onClick={(event) => {
-              handleClick(product.id, event);
+              handleInClick(product.id, event);
             }}
           >
             +
+          </button>
+          <button
+            onClick={(event) => {
+              handleDeClick(product.id, event);
+            }}
+          >
+            -
           </button>
         </li>
       ))}
