@@ -43,14 +43,18 @@ export default function Arrary2() {
       />
       <button
         onClick={() => {
-          setTodos([
-            ...todos,
-            {
-              id: init++,
-              title: title,
-              done: false,
-            },
-          ]);
+          if (title !== undefined && title.trim() !== '') {
+            setTodos([
+              ...todos,
+              {
+                id: init++,
+                title: title,
+                done: false,
+              },
+            ]);
+          } else {
+            console.log('cannot be null');
+          }
           setTitle('');
         }}
       >
