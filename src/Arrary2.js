@@ -6,30 +6,20 @@ const initialTodos = [
   { id: 2, title: 'Brew tea', done: false },
 ];
 
+let init = 3;
+
 export default function Arrary2() {
   const [todos, setTodos] = React.useState(initialTodos);
   const [title, setTitle] = React.useState('');
 
-  function handleAddTodo(title, e) {
-    if (title !== null && title !== undefined && title.trim() !== '') {
-      setTodos([
-        ...todos,
-        {
-          id: initialTodos.length++,
-          title: title,
-          done: false,
-        },
-      ]);
-      setTitle('');
-    } else {
-      console.log('cannot be null');
-    }
+  function handleTitleChange(e) {
+    setTitle(e.target.value);
   }
 
-  function handleChange(newTodo, event) {
+  function handleChange(newTodo) {
     setTodos(
       todos.map((todo) => {
-        if (newTodo.id === todo.id) {
+        if (todo.id === newTodo.id) {
           return newTodo;
         } else {
           return todo;
@@ -38,72 +28,89 @@ export default function Arrary2() {
     );
   }
 
-  function handleDelete(todoID) {
-    setTodos(todos.filter((t) => t.id !== todoID));
+  function handleDelClick(productId) {
+    setTodos(todos.filter((todo) => todo.id !== productId));
   }
 
   return (
     <>
       <input
         type="text"
+        placeholder=" Add todo"
         value={title}
-        placeholder="Add todo"
-        onChange={(e) => {
-          setTitle(e.target.value);
-        }}
+        name="title"
+        onChange={handleTitleChange}
       />
       <button
-        onClick={(e) => {
-          handleAddTodo(title, e);
+        onClick={() => {
+          setTodos([
+            ...todos,
+            {
+              id: init++,
+              title: title,
+              done: false,
+            },
+          ]);
+          setTitle('');
         }}
       >
         Add
       </button>
-      {todos.map((todo) => (
-        <li key={todo.id}>
-          <input
-            type="checkbox"
-            checked={todo.done}
-            onChange={(e) => {
-              handleChange({ ...todo, done: e.target.checked }, e);
-            }}
-          />
-          <Task todo={todo} onChange={handleChange} />
-          <button
-            onClick={(e) => {
-              handleDelete(todo.id);
-            }}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id.toString()}>
+            <input
+              type="checkbox"
+              checked={todo.done}
+              onChange={(e) => {
+                handleChange({ ...todo, done: e.target.checked });
+              }}
+            />
+            <Task todo={todo} onChange={handleChange} />
+            <button
+              onClick={(e) => {
+                handleDelClick(todo.id);
+              }}
+            >
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
     </>
   );
 }
 
 function Task({ todo, onChange }) {
   const [isEditing, setIsEditing] = React.useState(false);
-  let todoContent;
   if (isEditing) {
-    todoContent = (
+    return (
       <>
         <input
           type="text"
           value={todo.title}
           onChange={(e) => {
-            onChange({ ...todo, title: e.target.value }, e);
+            onChange({
+              ...todo,
+              title: e.target.value,
+            });
           }}
         />
-        <button onClick={() => setIsEditing(false)}>Save</button>
+        <button
+          onClick={() => {
+            setIsEditing(false);
+          }}
+        >
+          Save
+        </button>
       </>
     );
   } else {
-    todoContent = (
+    return (
       <>
         {todo.title}
         <button
-          onClick={(e) => {
+          onClick={() => {
             setIsEditing(true);
           }}
         >
@@ -112,6 +119,4 @@ function Task({ todo, onChange }) {
       </>
     );
   }
-
-  return <>{todoContent}</>;
 }
