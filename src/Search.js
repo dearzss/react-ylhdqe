@@ -6,7 +6,7 @@ export default function Search() {
   const results = foods.filter((item) =>
     item.name
       .split(' ')
-      .some((word) => word?.toLowerCase().startsWith(query.toLowerCase()))
+      .some((word) => word?.toLowerCase().includes(query.toLowerCase()))
   );
 
   return (
