@@ -1,9 +1,14 @@
 import React from 'react';
-import { foods, filterItems } from './SearchData.js';
+import { foods } from './SearchData.js';
 
 export default function Search() {
   const [query, setQuery] = React.useState('');
-  const results = filterItems(foods, query);
+  const results = foods.filter((item) =>
+    item.name
+      .split(' ')
+      .some((word) => word?.toLowerCase().startsWith(query.toLowerCase()))
+  );
+
   return (
     <>
       <label htmlFor="search">Search: </label>
@@ -28,14 +33,3 @@ export default function Search() {
     </>
   );
 }
-
-/*
-function filterItems({ items, query }) {
-  console.log(query);
-  query = query?.toLowerCase();
-  return items.filter((item) =>
-    item.name.split(' ').some((word) => word?.toLowerCase().startsWith(query))
-  );
-}
-
-*/
