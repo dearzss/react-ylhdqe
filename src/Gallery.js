@@ -2,42 +2,45 @@ import React from 'react';
 import { sculptureList } from './data.js';
 
 export default function Gallery() {
-  const [index, setIndex] = React.useState(0);
+  const [sculptures, setSculptures] = React.useState(sculptureList);
+  const [init, setInit] = React.useState(0);
   const [showMore, setShowMore] = React.useState(true);
-
-  function handleMoreClick() {
-    setShowMore(!showMore);
-  }
-
-  function handleNextClick() {
-    index < 11 ? setIndex(index + 1) : setIndex(index);
-  }
-
-  function handlePrevClick() {
-    index > 0 ? setIndex(index - 1) : setIndex(index);
-  }
-
-  let sculpture = sculptureList[index];
   return (
     <>
-      <button onClick={handlePrevClick} disabled={index > 0 ? false : true}>
+      <button
+        onClick={(e) => {
+          setInit(init - 1);
+        }}
+        disabled={init > 0 ? false : true}
+      >
         Previous
       </button>
-      <button onClick={handleNextClick} disabled={index < 11 ? false : true}>
+      <button
+        onClick={(e) => {
+          setInit(init + 1);
+        }}
+        disabled={init < sculptures.length - 1 ? false : true}
+      >
         Next
       </button>
-      <h2>
-        <i>{sculpture.name} </i>
-        by {sculpture.artist}
-      </h2>
       <h3>
-        ({index + 1} of {sculptureList.length})
+        <i>{sculptures[init].name}</i> by {sculptures[init].artist}
       </h3>
-      <button onClick={handleMoreClick}>
+      <b>
+        ({init + 1} of {sculptures.length})
+      </b>
+      <br />
+      <button
+        onClick={(e) => {
+          setShowMore(!showMore);
+        }}
+      >
+        {' '}
         {showMore ? 'Hide' : 'Show'} details
       </button>
-      {showMore && <p>{sculpture.description}</p>}
-      <img src={sculpture.url} alt={sculpture.alt} />
+      <br />
+      {showMore ? sculptures[init].description : ''}
+      <img url={sculptures[init].url} alt={sculptures[init].alt}></img>
     </>
   );
 }

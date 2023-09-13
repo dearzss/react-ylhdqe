@@ -44,6 +44,6 @@ const rootElement = document.getElementById('gallery');
 const root = createRoot(rootElement);
 root.render(<Gallery />);
 */
-//createRoot(document.getElementById('gallery')).render(<Gallery />);
+createRoot(document.getElementById('gallery')).render(<Gallery />);
 //createRoot(document.getElementById('array')).render(<Arrary1 />);
-createRoot(document.getElementById('array2')).render(<Arrary2 />);
+//createRoot(document.getElementById('array2')).render(<Arrary2 />);
