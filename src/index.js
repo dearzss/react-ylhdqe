@@ -9,6 +9,7 @@ import ConditionalRender from './ConditionalRender.js';
 import Gallery from './Gallery.js';
 import Arrary1 from './Arrary1.js';
 import Arrary2 from './Arrary2.js';
+import Search from './Search.js';
 
 /*
 const rootElement = document.getElementById('root');
@@ -46,4 +47,5 @@ root.render(<Gallery />);
 */
 //createRoot(document.getElementById('gallery')).render(<Gallery />);
 //createRoot(document.getElementById('array')).render(<Arrary1 />);
-createRoot(document.getElementById('array2')).render(<Arrary2 />);
+//createRoot(document.getElementById('array2')).render(<Arrary2 />);
+createRoot(document.getElementById('search')).render(<Search />);
