@@ -43,7 +43,7 @@ export default function Arrary2() {
       />
       <button
         onClick={() => {
-          if (title !== undefined && title.trim() !== '') {
+          if (title !== null && title !== undefined && title.trim() !== '') {
             setTodos([
               ...todos,
               {
