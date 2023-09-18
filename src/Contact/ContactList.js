@@ -1,21 +1,21 @@
 import React from 'react';
 
-export default function ContactList({ contacts, selectID, onSelect }) {
+export default function ContactList({ contacts, selectedId, onSelectID }) {
   return (
-    <section>
+    <>
       <ul>
         {contacts.map((contact) => (
-          <li key={contact.id.toString()}>
+          <li key={contact.id}>
             <button
               onClick={(e) => {
-                onSelect(contact.id);
+                onSelectID(contact.id);
               }}
             >
-              {selectID === contact.id ? <b>{contact.name}</b> : contact.name}
+              {selectedId === contact.id ? <b>{contact.name}</b> : contact.name}
             </button>
           </li>
         ))}
       </ul>
-    </section>
+    </>
   );
 }

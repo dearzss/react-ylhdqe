@@ -10,14 +10,14 @@ const initialContacts = [
 
 export default function Contact() {
   const [contacts, setContacts] = React.useState(initialContacts);
-  const [selectID, setSelectID] = React.useState(0);
-  const selectedContact = contacts.find((contact) => contact.id === selectID);
+  const [selectedId, setSelectedId] = React.useState(0);
+  const selectedContact = contacts.find((c) => c.id === selectedId);
 
-  function handleSave(updatedate) {
+  function onSave(newContact) {
     setContacts(
       contacts.map((contact) => {
-        if (contact.id === updatedate.id) {
-          return updatedate;
+        if (contact.id === newContact.id) {
+          return newContact;
         } else return contact;
       })
     );
@@ -27,15 +27,17 @@ export default function Contact() {
     <>
       <ContactList
         contacts={contacts}
-        selectID={selectID}
-        onSelect={(id) => setSelectID(id)}
+        selectedId={selectedId}
+        onSelectID={(id) => setSelectedId(id)}
       />
       <hr />
       <EditContact
-        key={selectID}
+        key={selectedId}
         selectedContact={selectedContact}
-        onSave={handleSave}
+        onSave={onSave}
       />
     </>
   );
+
+  console.log(contacts);
 }
