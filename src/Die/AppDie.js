@@ -7,14 +7,18 @@ import { nanoid } from 'nanoid';
 export default function AppDie() {
   const [dice, setDice] = React.useState(allNewDice());
 
+  function generateNewDice() {
+    return {
+      value: Math.ceil(Math.random() * 6),
+      isHeld: false,
+      id: nanoid(),
+    };
+  }
+
   function allNewDice() {
     const newDice = [];
     for (let i = 0; i < 10; i++) {
-      newDice.push({
-        value: Math.ceil(Math.random() * 6),
-        isHeld: false,
-        id: nanoid(),
-      });
+      newDice.push(generateNewDice());
     }
     return newDice;
   }
@@ -28,6 +32,14 @@ export default function AppDie() {
             isHeld: !die.isHeld,
           };
         } else return die;
+      })
+    );
+  }
+
+  function rollDice() {
+    setDice(
+      dice.map((die) => {
+        return die.isHeld ? die : generateNewDice();
       })
     );
   }
@@ -48,7 +60,7 @@ export default function AppDie() {
       <button
         className="dice-button"
         onClick={() => {
-          setDice(allNewDice());
+          rollDice();
         }}
       >
         Roll
