@@ -13,6 +13,8 @@ import Search from './Search.js';
 import Contact from './Contact/Contact.js';
 import UseEffect from './UseEffect.js';
 import UseContext from './UseContext.js';
+import AppDie from './Die/AppDie.js';
+
 /*
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
@@ -53,5 +55,5 @@ root.render(<Gallery />);
 //createRoot(document.getElementById('search')).render(<Search />);
 //createRoot(document.getElementById('contact')).render(<Contact />);
 //createRoot(document.getElementById('useEffect')).render(<UseEffect />);
-
-createRoot(document.getElementById('useContext')).render(<UseContext />);
+//createRoot(document.getElementById('useContext')).render(<UseContext />);
+createRoot(document.getElementById('appDie')).render(<AppDie />);
