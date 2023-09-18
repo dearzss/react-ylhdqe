@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDebugValue } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import Button from 'react-bootstrap/Button';
 
 const initialTodos = [
   { id: 0, title: 'Buy milk', done: true },
@@ -42,7 +44,9 @@ export default function Arrary2() {
         name="title"
         onChange={handleTitleChange}
       />
-      <button
+      <Button
+        variant="dark"
+        className="mt-2"
         onClick={() => {
           if (title !== null && title !== undefined && title.trim() !== '') {
             setTodos([
@@ -60,7 +64,7 @@ export default function Arrary2() {
         }}
       >
         Add
-      </button>
+      </Button>
       <ul>
         {todos.map((todo) => (
           <li key={todo.id.toString()}>
