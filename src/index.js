@@ -48,6 +48,6 @@ root.render(<Gallery />);
 */
 //createRoot(document.getElementById('gallery')).render(<Gallery />);
 //createRoot(document.getElementById('array')).render(<Arrary1 />);
-//createRoot(document.getElementById('array2')).render(<Arrary2 />);
+createRoot(document.getElementById('array2')).render(<Arrary2 />);
 //createRoot(document.getElementById('search')).render(<Search />);
-createRoot(document.getElementById('contact')).render(<Contact />);
+//createRoot(document.getElementById('contact')).render(<Contact />);

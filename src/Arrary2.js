@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDebugValue } from 'react';
 
 const initialTodos = [
   { id: 0, title: 'Buy milk', done: true },
@@ -87,6 +88,7 @@ export default function Arrary2() {
 
 function Task({ todo, onChange }) {
   const [isEditing, setIsEditing] = React.useState(false);
+  useDebugValue(isEditing ? 'ture' : 'false');
   if (isEditing) {
     return (
       <>
