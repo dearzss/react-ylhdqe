@@ -27,6 +27,18 @@ export default function AppDie() {
     if (allHeld && allSameValue) {
       setTenzies(true);
       console.log('You won!');
+    } else {
+      setRecords(
+        records.map((record) => {
+          if (record.id === 0) {
+            return {
+              ...record,
+              endTimes: getCurrentDate(),
+              score: count,
+            };
+          }
+        })
+      );
     }
   }, [dices]);
 
@@ -70,6 +82,7 @@ export default function AppDie() {
           }
         })
       );
+      setCount((count) => count + 1);
     } else {
       setDices(allNewDice());
       setTenzies(false);
