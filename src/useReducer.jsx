@@ -92,8 +92,26 @@ function Task({ task, onChange }) {
   if (isEditing) {
     return (
       <>
-        <input value={task.text} onChange={() => {}} />
-        <button>Save</button>
+        <input
+          value={task.text}
+          onChange={(e) => {
+            onChange({
+              ...task,
+              text: e.target.value,
+            });
+          }}
+        />
+        <button
+          onChange={(e) => {
+            onChange({
+              ...task,
+              text: e.target.value,
+            });
+            setIsEditing(false);
+          }}
+        >
+          Save
+        </button>
       </>
     );
   } else {
