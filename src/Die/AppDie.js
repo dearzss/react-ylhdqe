@@ -3,9 +3,21 @@ import Die from './Die.js';
 import './Die.css';
 import { nanoid } from 'nanoid';
 
+const initialRecords = [
+  {
+    id: 0,
+    name: 'Test',
+    score: 0,
+    startTimes: getCurrentDate(),
+    endTimes: getCurrentDate(),
+  },
+];
+
 export default function AppDie() {
   const [dices, setDices] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
+  const [count, setCount] = React.useState(0);
+  const [records, setRecords] = React.useState(initialRecords);
 
   React.useEffect(() => {
     const allHeld = dices.every((dice) => dice.isHeld);
@@ -83,6 +95,15 @@ export default function AppDie() {
         <button className="dice-button" onClick={rollDice}>
           {tenzies ? 'New game' : 'Roll'}
         </button>
+        <br />
+        <lable>History:</lable>
+        {records.map((record) => (
+          <li key={record.id.toString()}>
+            {record.name} start at:
+            {record.startTimes}, end at:
+            {record.endTimes} score is :{record.score}
+          </li>
+        ))}
       </main>
     </>
   );
