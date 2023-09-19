@@ -14,6 +14,7 @@ import Contact from './Contact/Contact.js';
 import UseEffect from './UseEffect.js';
 import UseContext from './UseContext.js';
 import AppDie from './Die/AppDie.js';
+import UseReducer from './useReducer.jsx';
 
 /*
 const rootElement = document.getElementById('root');
@@ -56,4 +57,5 @@ root.render(<Gallery />);
 //createRoot(document.getElementById('contact')).render(<Contact />);
 //createRoot(document.getElementById('useEffect')).render(<UseEffect />);
 //createRoot(document.getElementById('useContext')).render(<UseContext />);
-createRoot(document.getElementById('appDie')).render(<AppDie />);
+//createRoot(document.getElementById('appDie')).render(<AppDie />);
+createRoot(document.getElementById('useReducer')).render(<UseReducer />);
