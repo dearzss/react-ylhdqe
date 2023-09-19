@@ -7,6 +7,17 @@ export default function AppDie() {
   const [dices, setDices] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
 
+  React.useEffect(() => {
+    const allHeld = dices.every((dice) => dice.isHeld);
+    const firstValue = dices[0].value;
+    const allSameValue = dices.every((dice) => dice.value === firstValue);
+
+    if (allHeld && allSameValue) {
+      setTenzies(true);
+      console.log('You won!');
+    }
+  }, [dices]);
+
   function generateNewDice() {
     return {
       id: nanoid(),
