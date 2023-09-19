@@ -78,7 +78,7 @@ function TaskList({ tasks, onChange }) {
               });
             }}
           />
-          <Task task={task} />
+          <Task task={task} onChange={onChange} />
           <button>Delete</button>
         </li>
       ))}
@@ -86,7 +86,7 @@ function TaskList({ tasks, onChange }) {
   );
 }
 
-function Task({ task }) {
+function Task({ task, onChange }) {
   const [isEditing, setIsEditing] = React.useState(false);
 
   if (isEditing) {
