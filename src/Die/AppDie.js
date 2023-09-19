@@ -5,6 +5,7 @@ import { nanoid } from 'nanoid';
 
 export default function AppDie() {
   const [dices, setDices] = React.useState(allNewDice());
+  const [tenzies, setTenzies] = React.useState(false);
 
   function generateNewDice() {
     return {
@@ -64,7 +65,7 @@ export default function AppDie() {
         </div>
         <br />
         <button className="dice-button" onClick={rollDice}>
-          Roll
+          {tenzies ? 'New game' : 'Roll'}
         </button>
       </main>
     </>
