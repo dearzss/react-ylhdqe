@@ -48,15 +48,20 @@ export default function AppDie() {
   }
 
   function rollDice() {
-    setDices(
-      dices.map((dice) => {
-        if (dice.isHeld) {
-          return dice;
-        } else {
-          return generateNewDice();
-        }
-      })
-    );
+    if (!tenzies) {
+      setDices(
+        dices.map((dice) => {
+          if (dice.isHeld) {
+            return dice;
+          } else {
+            return generateNewDice();
+          }
+        })
+      );
+    } else {
+      setDices(allNewDice());
+      setTenzies(false);
+    }
   }
 
   return (
