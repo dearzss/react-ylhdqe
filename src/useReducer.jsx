@@ -22,6 +22,15 @@ export default function UseReducer() {
           },
         ];
       }
+      case 'changed': {
+        return tasks.map((task) => {
+          if (task.id === action.newTask.id) {
+            return action.newTask;
+          } else {
+            return task;
+          }
+        });
+      }
       default: {
         throw Error('Unknown action: ' + action.type);
       }
@@ -36,22 +45,40 @@ export default function UseReducer() {
     });
   }
 
+  function handleChangeTask(newTask) {
+    dispatch({
+      type: 'changed',
+      newTask: newTask,
+    });
+  }
+
   return (
     <>
       <h1>Prague itinerary</h1>
       <AddTask onChange={handleAddTask} />
       <hr />
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onChange={handleChangeTask} />
     </>
   );
 }
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, onChange }) {
+  const [isEditing, setIsEditing] = React.useState(false);
+
   return (
     <>
       {tasks.map((task) => (
         <li key={task.id.toString()}>
-          <input type="checkbox" checked={task.done} />
+          <input
+            type="checkbox"
+            checked={task.done}
+            onChange={() => {
+              onChange({
+                ...task,
+                done: !task.done,
+              });
+            }}
+          />
           {task.text}
         </li>
       ))}
