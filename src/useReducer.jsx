@@ -8,18 +8,32 @@ const initialTasks = [
 ];
 
 export default function UseReducer() {
-  const [todos, setTodos] = React.useState(initialTasks);
+  const [tasks, dispatch] = React.useReducer(tasksReducer, initialTasks);
+
+  function tasksReducer(tasks, action) {
+    switch (action.type) {
+      case 'added': {
+        return [
+          ...tasks,
+          {
+            id: action.id,
+            text: action.text,
+            done: false,
+          },
+        ];
+      }
+      default: {
+        throw Error('Unknown action: ' + action.type);
+      }
+    }
+  }
 
   function handleAddTask(newTitle) {
-    console.log(newTitle);
-    setTodos([
-      ...todos,
-      {
-        id: nextId++,
-        text: newTitle,
-        done: false,
-      },
-    ]);
+    dispatch({
+      type: 'added',
+      id: nextId++,
+      text: newTitle,
+    });
   }
 
   return (
@@ -27,18 +41,18 @@ export default function UseReducer() {
       <h1>Prague itinerary</h1>
       <AddTask onChange={handleAddTask} />
       <hr />
-      <TaskList todos={todos} />
+      <TaskList tasks={tasks} />
     </>
   );
 }
 
-function TaskList({ todos }) {
+function TaskList({ tasks }) {
   return (
     <>
-      {todos.map((todo) => (
-        <li key={todo.id.toString()}>
-          <input type="checkbox" checked={todo.done} />
-          {todo.text}
+      {tasks.map((task) => (
+        <li key={task.id.toString()}>
+          <input type="checkbox" checked={task.done} />
+          {task.text}
         </li>
       ))}
     </>
@@ -59,6 +73,7 @@ function AddTask({ onChange }) {
       <button
         onClick={(e) => {
           onChange(title);
+          setTitle('');
         }}
       >
         Add
