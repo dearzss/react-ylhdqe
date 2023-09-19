@@ -6,6 +6,25 @@ import { nanoid } from 'nanoid';
 
 export default function AppDie() {
   const [dice, setDice] = React.useState(allNewDice());
+  const [tenzies, setTenzies] = React.useState(false);
+  const [count, setCount] = React.useState(0);
+
+  React.useEffect(() => {
+    setCount(count+);
+  }, [rollDice]);
+
+  React.useEffect(() => {
+    const allHeld = dice.every((die) => die.isHeld);
+    const firstValue = dice[0].value;
+    const allSameValue = dice.every((die) => die.value === firstValue);
+
+    if (allHeld && allSameValue) {
+      setTenzies(true);
+      console.log('Won');
+    } else {
+      console.log('failed');
+    }
+  }, dice);
 
   function generateNewDice() {
     return {
@@ -37,11 +56,16 @@ export default function AppDie() {
   }
 
   function rollDice() {
-    setDice(
-      dice.map((die) => {
-        return die.isHeld ? die : generateNewDice();
-      })
-    );
+    if (!tenzies) {
+      setDice(
+        dice.map((die) => {
+          return die.isHeld ? die : generateNewDice();
+        })
+      );
+    } else {
+      setDice(allNewDice());
+      setTenzies(false);
+    }
   }
 
   return (
@@ -63,7 +87,7 @@ export default function AppDie() {
           rollDice();
         }}
       >
-        Roll
+        {tenzies ? 'New Game' : 'Roll'}
       </button>
     </main>
   );
