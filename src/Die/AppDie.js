@@ -20,8 +20,6 @@ export default function AppDie() {
   const [count, setCount] = React.useState(0);
   const [records, setRecords] = React.useState(initialRecords);
 
-  console.log(records);
-
   React.useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
     const firstValue = dice[0].value;
@@ -110,7 +108,7 @@ export default function AppDie() {
         {tenzies ? 'New Game' : 'Roll'}
       </button>
       <br />
-      <lable>History:</lable>
+      <label>History:</label>
       {records.map((record) => (
         <li key={record.id.toString()}>
           {record.name} start at:
