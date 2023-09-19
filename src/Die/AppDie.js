@@ -27,7 +27,6 @@ export default function AppDie() {
     if (allHeld && allSameValue) {
       setTenzies(true);
       console.log('You won!');
-    } else {
       setRecords(
         records.map((record) => {
           if (record.id === 0) {
@@ -39,6 +38,7 @@ export default function AppDie() {
           }
         })
       );
+      setCount(0);
     }
   }, [dices]);
 
