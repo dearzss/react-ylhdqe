@@ -4,14 +4,23 @@ import Die from './Die.js';
 import './Die.css';
 import { nanoid } from 'nanoid';
 
+const initialRecords = [
+  {
+    id: 0,
+    name: 'Test',
+    score: 0,
+    startTimes: getCurrentDate(),
+    endTimes: getCurrentDate(),
+  },
+];
+
 export default function AppDie() {
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   const [count, setCount] = React.useState(0);
+  const [records, setRecords] = React.useState(initialRecords);
 
-  React.useEffect(() => {
-    setCount(count+);
-  }, [rollDice]);
+  console.log(records);
 
   React.useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -21,8 +30,18 @@ export default function AppDie() {
     if (allHeld && allSameValue) {
       setTenzies(true);
       console.log('Won');
-    } else {
-      console.log('failed');
+      setRecords(
+        records.map((record) => {
+          if (record.id === 0) {
+            return {
+              ...record,
+              endTimes: getCurrentDate(),
+              score: count,
+            };
+          }
+        })
+      );
+      setCount(0);
     }
   }, dice);
 
@@ -62,6 +81,7 @@ export default function AppDie() {
           return die.isHeld ? die : generateNewDice();
         })
       );
+      setCount((count) => count + 1);
     } else {
       setDice(allNewDice());
       setTenzies(false);
@@ -89,6 +109,33 @@ export default function AppDie() {
       >
         {tenzies ? 'New Game' : 'Roll'}
       </button>
+      <br />
+      <lable>History:</lable>
+      {records.map((record) => (
+        <li key={record.id.toString()}>
+          {record.name} start at:
+          {record.startTimes}, end at:
+          {record.endTimes} score is :{record.score}
+        </li>
+      ))}
     </main>
   );
+}
+
+function getCurrentDate(separator = '-') {
+  let newDate = new Date();
+  let date = newDate.getDate();
+  let month = newDate.getMonth() + 1;
+  let year = newDate.getFullYear();
+
+  let curTime =
+    newDate.getHours() +
+    ':' +
+    newDate.getMinutes() +
+    ':' +
+    newDate.getSeconds();
+
+  return `${year}${separator}${
+    month < 10 ? `0${month}` : `${month}`
+  }${separator}${date}${' '}${curTime}`;
 }
