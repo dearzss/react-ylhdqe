@@ -90,9 +90,25 @@ function Task({ task }) {
   const [isEditing, setIsEditing] = React.useState(false);
 
   if (isEditing) {
-    return <input>{task.text}</input>;
+    return (
+      <>
+        <input value={task.text} onChange={() => {}} />
+        <button>Save</button>
+      </>
+    );
   } else {
-    return <label>{task.text}</label>;
+    return (
+      <>
+        <label>{task.text}</label>
+        <button
+          onClick={() => {
+            setIsEditing(!isEditing);
+          }}
+        >
+          Edit
+        </button>
+      </>
+    );
   }
 }
 
