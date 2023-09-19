@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 let nextId = 3;
 const initialTasks = [
@@ -63,8 +64,6 @@ export default function UseReducer() {
 }
 
 function TaskList({ tasks, onChange }) {
-  const [isEditing, setIsEditing] = React.useState(false);
-
   return (
     <>
       {tasks.map((task) => (
@@ -79,11 +78,22 @@ function TaskList({ tasks, onChange }) {
               });
             }}
           />
-          {task.text}
+          <Task task={task} />
+          <button>Delete</button>
         </li>
       ))}
     </>
   );
+}
+
+function Task({ task }) {
+  const [isEditing, setIsEditing] = React.useState(false);
+
+  if (isEditing) {
+    return <input>{task.text}</input>;
+  } else {
+    return <label>{task.text}</label>;
+  }
 }
 
 function AddTask({ onChange }) {
