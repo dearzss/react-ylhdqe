@@ -4,6 +4,7 @@ import Die from './Die.js';
 import './Die.css';
 import { nanoid } from 'nanoid';
 
+
 const initialRecords = [
   {
     id: 0,
