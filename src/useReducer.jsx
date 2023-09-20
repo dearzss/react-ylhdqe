@@ -137,6 +137,7 @@ function Task({ task, onChange }) {
       <>
         <label>{task.text}</label>
         <button
+          disabled={task.done}
           onClick={() => {
             setIsEditing(true);
           }}
