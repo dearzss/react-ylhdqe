@@ -88,15 +88,15 @@ function TaskList({ tasks, onChange }) {
 
 function Task({ task, onChange }) {
   const [isEditing, setIsEditing] = React.useState(false);
-  const [title]
+  const [newText, setNewText] = React.useState(task.text);
 
   if (isEditing) {
     return (
       <>
         <input
-          value={task.text}
+          value={newText}
           onChange={(e) => {
-            
+            setNewText(e.target.value);
           }}
         />
         <button
@@ -105,7 +105,7 @@ function Task({ task, onChange }) {
               ...task,
               text: e.target.value,
             });
-            setIsEditing(false);
+            setIsEditing(!isEditing);
           }}
         >
           Save
