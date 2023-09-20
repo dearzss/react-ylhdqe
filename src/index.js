@@ -58,4 +58,8 @@ root.render(<Gallery />);
 //createRoot(document.getElementById('useEffect')).render(<UseEffect />);
 //createRoot(document.getElementById('useContext')).render(<UseContext />);
 //createRoot(document.getElementById('appDie')).render(<AppDie />);
-createRoot(document.getElementById('useReducer')).render(<UseReducer />);
+createRoot(document.getElementById('useReducer')).render(
+  <StrictMode>
+    <UseReducer />
+  </StrictMode>
+);
