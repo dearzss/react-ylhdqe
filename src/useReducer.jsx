@@ -100,12 +100,13 @@ function Task({ task, onChange }) {
           }}
         />
         <button
-          onChange={(e) => {
+          onClick={(e) => {
             onChange({
               ...task,
-              text: e.target.value,
+              text: newText,
             });
-            setIsEditing(!isEditing);
+            console.log(task);
+            setIsEditing(false);
           }}
         >
           Save
@@ -118,7 +119,7 @@ function Task({ task, onChange }) {
         <label>{task.text}</label>
         <button
           onClick={() => {
-            setIsEditing(!isEditing);
+            setIsEditing(true);
           }}
         >
           Edit
