@@ -32,6 +32,9 @@ export default function UseReducer() {
           }
         });
       }
+      case 'deleted': {
+        return tasks.filter((task) => task.id !== action.delTaskId);
+      }
       default: {
         throw Error('Unknown action: ' + action.type);
       }
@@ -53,17 +56,28 @@ export default function UseReducer() {
     });
   }
 
+  function handleDelTask(taskId) {
+    dispatch({
+      type: 'deleted',
+      delTaskId: taskId,
+    });
+  }
+
   return (
     <>
       <h1>Prague itinerary</h1>
       <AddTask onChange={handleAddTask} />
       <hr />
-      <TaskList tasks={tasks} onChange={handleChangeTask} />
+      <TaskList
+        tasks={tasks}
+        onChange={handleChangeTask}
+        onDelete={handleDelTask}
+      />
     </>
   );
 }
 
-function TaskList({ tasks, onChange }) {
+function TaskList({ tasks, onChange, onDelete }) {
   return (
     <>
       {tasks.map((task) => (
@@ -79,7 +93,13 @@ function TaskList({ tasks, onChange }) {
             }}
           />
           <Task task={task} onChange={onChange} />
-          <button>Delete</button>
+          <button
+            onClick={() => {
+              onDelete(task.id);
+            }}
+          >
+            Delete
+          </button>
         </li>
       ))}
     </>
@@ -105,7 +125,6 @@ function Task({ task, onChange }) {
               ...task,
               text: newText,
             });
-            console.log(task);
             setIsEditing(false);
           }}
         >
