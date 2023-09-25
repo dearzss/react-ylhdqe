@@ -15,6 +15,7 @@ import UseEffect from './UseEffect.js';
 import UseContext from './UseContext.js';
 import AppDie from './Die/AppDie.js';
 import UseReducer from './useReducer.jsx';
+import SearchParams from './SearchParams/SearchParams.jsx';
 
 /*
 const rootElement = document.getElementById('root');
@@ -58,8 +59,16 @@ root.render(<Gallery />);
 //createRoot(document.getElementById('useEffect')).render(<UseEffect />);
 //createRoot(document.getElementById('useContext')).render(<UseContext />);
 //createRoot(document.getElementById('appDie')).render(<AppDie />);
+/*
 createRoot(document.getElementById('useReducer')).render(
   <StrictMode>
     <UseReducer />
+  </StrictMode>
+);
+*/
+
+createRoot(document.getElementById('searchParams')).render(
+  <StrictMode>
+    <SearchParams />
   </StrictMode>
 );
