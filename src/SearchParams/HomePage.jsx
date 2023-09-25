@@ -29,6 +29,9 @@ export default function HomePage() {
   return (
     <main>
       <h2>Home</h2>
+      <Link to=".." relative="path">
+        &larr; <span>Back to characters</span>
+      </Link>
       <div>
         <Link to={genNewSearchParamString('type', 'jedi')}>Jedi</Link>
         <Link to={genNewSearchParamString('type', 'sith')}>Sith</Link>
