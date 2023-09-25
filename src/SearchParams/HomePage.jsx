@@ -37,6 +37,11 @@ export default function HomePage() {
         <Link to={genNewSearchParamString('type', 'sith')}>Sith</Link>
         <Link to={genNewSearchParamString('type', null)}>Clear</Link>
       </div>
+      <div>
+        <button onClick={() => setSearchParams({ type: 'jedi' })}>Jedi</button>
+        <button onClick={() => setSearchParams({ type: 'sith' })}>Sith</button>
+        <button onClick={() => setSearchParams({})}>Clear</button>
+      </div>
       <hr />
       {displayCharacters.map((char) => (
         <div key={char.name}>
