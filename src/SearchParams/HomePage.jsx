@@ -26,6 +26,17 @@ export default function HomePage() {
     return `?${sp.toString()}`;
   }
 
+  function handleFilterChange(key, value) {
+    setSearchParams((preSearchPara) => {
+      if (value === null) {
+        preSearchPara.delete(key);
+      } else {
+        preSearchPara.set(key, value);
+      }
+      return preSearchPara;
+    });
+  }
+
   return (
     <main>
       <h2>Home</h2>
@@ -38,9 +49,27 @@ export default function HomePage() {
         <Link to={genNewSearchParamString('type', null)}>Clear</Link>
       </div>
       <div>
-        <button onClick={() => setSearchParams({ type: 'jedi' })}>Jedi</button>
-        <button onClick={() => setSearchParams({ type: 'sith' })}>Sith</button>
-        <button onClick={() => setSearchParams({})}>Clear</button>
+        <button
+          onClick={() => {
+            handleFilterChange('type', 'jedi');
+          }}
+        >
+          Jedi
+        </button>
+        <button
+          onClick={() => {
+            handleFilterChange('type', 'sith');
+          }}
+        >
+          Sith
+        </button>
+        <button
+          onClick={() => {
+            handleFilterChange('type', null);
+          }}
+        >
+          Clear
+        </button>
       </div>
       <hr />
       {displayCharacters.map((char) => (
