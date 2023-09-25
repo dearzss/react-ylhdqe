@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Link,
-  useSearchParams,
-} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage.jsx';
 import HomePageLayout from './HomePageLayout.jsx';
 
