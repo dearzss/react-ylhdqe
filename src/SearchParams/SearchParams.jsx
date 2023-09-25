@@ -6,13 +6,16 @@ import {
   Link,
   useSearchParams,
 } from 'react-router-dom';
+import HomePage from './HomePage.jsx';
 import HomePageLayout from './HomePageLayout.jsx';
 
 export default function SearchParams() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/characters" element={<HomePageLayout />} />
+        <Route path="/" element={<HomePageLayout />}>
+          <Route path="characters" element={<HomePage />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
