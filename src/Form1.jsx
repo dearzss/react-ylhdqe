@@ -12,9 +12,10 @@ import {
 } from '@govtechsg/sgds-react';
 import 'sgds-govtech/css/sgds.css';
 
+const styles = {};
 export default function Form1() {
   return (
-    <div>
+    <div style={{ styles }}>
       <Masthead />
       <section className="my-8 mx-md-8">
         <Breadcrumb>
@@ -22,7 +23,7 @@ export default function Form1() {
           <Breadcrumb.Item active>SIGN-UP</Breadcrumb.Item>
         </Breadcrumb>
         <Row>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={4}>
             <h1>Sign-up</h1>
             <p className="text-muted">
               Already a member?{' '}
@@ -58,7 +59,7 @@ export default function Form1() {
                 controlId="formSinglePageInput1"
               >
                 <Form.Label>Label</Form.Label>
-                <Form.Control type="text" placeholder="Text goes here" />
+                <Form.Control type="text" placeholder="Text goes here1" />
               </Form.Group>
               <Form.Group
                 as={Col}
@@ -68,14 +69,14 @@ export default function Form1() {
                 controlId="formSinglePageInput2"
               >
                 <Form.Label>Label</Form.Label>
-                <Form.Control type="text" placeholder="Text goes here" />
+                <Form.Control type="text" placeholder="Text goes here2" />
               </Form.Group>
             </Row>
             <Form.Group className="mb-3" controlId="formSinglePageInput3">
               <Form.Label>Label</Form.Label>
               <InputGroup className="mb-3">
                 <Form.Control
-                  placeholder="Text goes here"
+                  placeholder="Text goes here3"
                   aria-label="Dollar amount (with dot and two decimal places)"
                 />
                 <InputGroup.Text>@something</InputGroup.Text>
