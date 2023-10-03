@@ -16,6 +16,7 @@ import UseContext from './UseContext.js';
 import AppDie from './Die/AppDie.js';
 import UseReducer from './useReducer.jsx';
 import SearchParams from './SearchParams/SearchParams.jsx';
+import Form1 from './Form1.jsx';
 
 /*
 const rootElement = document.getElementById('root');
@@ -65,10 +66,15 @@ createRoot(document.getElementById('useReducer')).render(
     <UseReducer />
   </StrictMode>
 );
-*/
-
 createRoot(document.getElementById('searchParams')).render(
   <StrictMode>
     <SearchParams />
+  </StrictMode>
+);
+*/
+
+createRoot(document.getElementById('form1')).render(
+  <StrictMode>
+    <Form1 />
   </StrictMode>
 );
