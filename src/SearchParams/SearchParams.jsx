@@ -9,6 +9,7 @@ export default function SearchParams() {
       <Routes>
         <Route path="/" element={<HomePageLayout />}>
           <Route path="characters" element={<HomePage />} />
+          <Route path="chasssracters" element={<HomePage />} />
         </Route>
       </Routes>
     </BrowserRouter>

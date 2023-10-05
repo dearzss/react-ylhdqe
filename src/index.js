@@ -66,15 +66,15 @@ createRoot(document.getElementById('useReducer')).render(
     <UseReducer />
   </StrictMode>
 );
-createRoot(document.getElementById('searchParams')).render(
-  <StrictMode>
-    <SearchParams />
-  </StrictMode>
-);
-*/
-
 createRoot(document.getElementById('form1')).render(
   <StrictMode>
     <Form1 />
+  </StrictMode>
+);
+
+*/
+createRoot(document.getElementById('searchParams')).render(
+  <StrictMode>
+    <SearchParams />
   </StrictMode>
 );
