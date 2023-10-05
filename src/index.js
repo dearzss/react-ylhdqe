@@ -17,6 +17,7 @@ import AppDie from './Die/AppDie.js';
 import UseReducer from './useReducer.jsx';
 import SearchParams from './SearchParams/SearchParams.jsx';
 import Form1 from './Form1.jsx';
+import Links from './Link/Link.tsx';
 
 /*
 const rootElement = document.getElementById('root');
@@ -71,10 +72,15 @@ createRoot(document.getElementById('form1')).render(
     <Form1 />
   </StrictMode>
 );
+createRoot(document.getElementById('searchParams')).render(
+  <StrictMode>
+    <SearchParams />
+  </StrictMode>
+);
 
 */
 createRoot(document.getElementById('searchParams')).render(
   <StrictMode>
-    <SearchParams />
+    <Links />
   </StrictMode>
 );
