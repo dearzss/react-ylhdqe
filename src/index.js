@@ -18,6 +18,7 @@ import UseReducer from './useReducer.jsx';
 import SearchParams from './SearchParams/SearchParams.jsx';
 import Form1 from './Form1.jsx';
 import Links from './Link/Link.tsx';
+import Formiks from './Formiks/Formiks.tsx';
 
 /*
 const rootElement = document.getElementById('root');
@@ -77,10 +78,15 @@ createRoot(document.getElementById('searchParams')).render(
     <SearchParams />
   </StrictMode>
 );
-
-*/
 createRoot(document.getElementById('searchParams')).render(
   <StrictMode>
     <Links />
+  </StrictMode>
+);
+
+*/
+createRoot(document.getElementById('formiks')).render(
+  <StrictMode>
+    <Formiks />
   </StrictMode>
 );
