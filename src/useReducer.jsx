@@ -17,8 +17,8 @@ export default function UseReducer() {
         return [
           ...tasks,
           {
-            id: action.id,
-            text: action.text,
+            id: action.payload.id,
+            text: action.payload.text,
             done: false,
           },
         ];
@@ -44,8 +44,10 @@ export default function UseReducer() {
   function handleAddTask(newTitle) {
     dispatch({
       type: 'added',
-      id: nextId++,
-      text: newTitle,
+      payload: {
+        id: nextId++,
+        text: newTitle,
+      },
     });
   }
 
